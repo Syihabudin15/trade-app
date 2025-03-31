@@ -15,7 +15,7 @@ export const ListMarket = () => {
     (async () => {
       setLoading(true);
       setInterval(async () => {
-        let temp = await FutureBinanceMarketData();
+        const temp = await FutureBinanceMarketData();
         setData(temp.sort((a, b) => a.symbol.localeCompare(b.symbol)));
       }, 1000);
       setLoading(false);

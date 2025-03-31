@@ -51,7 +51,7 @@ export const CandleStream = ({ symbol }: { symbol: string }) => {
         }
       });
     };
-  }, []);
+  }, [symbol]);
 
   return (
     <div className="flex flex-col sm:flex-row flex-wrap gap-2">
