@@ -9,7 +9,7 @@ export const FormLogin = () => {
   return (
     <div className="flex bg-gradient-to-br from-green-400 to-blue-400 items-center p-4 h-[81vh]">
       <div className="flex-1 hidden sm:flex justify-center">
-        <Image src="favicon.ico" />
+        <Image src="favicon.ico" alt="Security Image" />
       </div>
       <div className="flex-1 flex justify-center">
         <div className="w-full sm:w-[70%]">

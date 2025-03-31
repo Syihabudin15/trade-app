@@ -18,13 +18,13 @@ export default function Home() {
           </Link>
         </div>
         <div className="flex-1 flex justify-center">
-          <Image src="/favicon.ico" />
+          <Image src="/favicon.ico" alt="App Logo" />
         </div>
 
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 1440 320"
-          className="absolute w-full left-0 opacity-80 bottom-25 sm:bottom-5"
+          className="absolute w-full left-0 opacity-80 bottom-15 sm:-bottom-10"
         >
           <path
             fill="#ffffff"
@@ -35,7 +35,7 @@ export default function Home() {
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 1440 320"
-          className="absolute w-full left-0  bottom-20 sm:bottom-0"
+          className="absolute w-full left-0  bottom-10 sm:-bottom-15"
         >
           <path
             fill="#ffffff"

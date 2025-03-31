@@ -1,5 +1,5 @@
 "use client";
-import { Button, Menu } from "antd";
+import { Button, Drawer, Menu } from "antd";
 import { AntdConfig, UserProvider } from ".";
 import {
   DollarCircleFilled,
@@ -11,6 +11,7 @@ import {
 import { useState } from "react";
 import Link from "next/link";
 import { IUserContext, useUser } from "./UserContext";
+import { useRouter } from "next/navigation";
 
 export default function DefaultLayout({
   children,
@@ -50,15 +51,45 @@ export default function DefaultLayout({
 
 const MobileMenu = ({ user }: { user: IUserContext | null }) => {
   const [open, setOpen] = useState(false);
+  const router = useRouter();
   return (
     <div>
       <Button onClick={() => setOpen(true)} ghost type="dashed">
         <MenuOutlined />
       </Button>
+      <Drawer open={open} onClose={() => setOpen(false)}>
+        <Menu
+          items={
+            user
+              ? allMenu
+                  .filter(
+                    (m) => m.type === "AUTHORIZED" && m.role.includes(user.role)
+                  )
+                  .map((m) => ({
+                    label: m.label,
+                    title: m.label,
+                    key: m.key,
+                    icon: m.icon,
+                  }))
+              : allMenu
+                  .filter((m) => m.type === "UNAUTHORIZED")
+                  .map((m) => ({
+                    label: m.label,
+                    title: m.label,
+                    key: m.key,
+                    icon: m.icon,
+                  }))
+          }
+          mode="inline"
+          onClick={(e) => router.push(e.key)}
+        />
+      </Drawer>
     </div>
   );
 };
 const DefaultMenu = ({ user }: { user: IUserContext | null }) => {
+  const router = useRouter();
+
   return (
     <div>
       <Menu
@@ -86,6 +117,7 @@ const DefaultMenu = ({ user }: { user: IUserContext | null }) => {
         }
         mode="horizontal"
         theme="dark"
+        onClick={(e) => router.push(e.key)}
       />
     </div>
   );
@@ -117,6 +149,13 @@ const allMenu: IMenuList[] = [
   {
     label: "Pricing",
     key: "/prices",
+    icon: <DollarCircleFilled />,
+    type: "UNAUTHORIZED",
+    role: [],
+  },
+  {
+    label: "Market",
+    key: "/market",
     icon: <DollarCircleFilled />,
     type: "UNAUTHORIZED",
     role: [],
