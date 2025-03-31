@@ -1,0 +1,47 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+enum ERole {
+  DEVELOPER
+  CUSTOMER
+}
+
+enum EUserType {
+  PERSONAL
+  PROFESSIONAL
+  BUSINNES
+}
+
+model User {
+  id       String    @id @default(uuid())
+  name     String
+  username String    @unique
+  email    String    @unique
+  password String
+  phone    String    @unique
+  userType EUserType @default(PERSONAL)
+  role     ERole
+
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+}
+
+model DataOHCL {
+  id        String @id @default(uuid())
+  symbol    String
+  interval  String
+  opentime  Int
+  open      Float
+  high      Float
+  low       Float
+  close     Float
+  closetime Int
+  volume    Float
+}
