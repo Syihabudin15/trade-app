@@ -10,10 +10,10 @@ export const CandleStream = ({ symbol }: { symbol: string }) => {
   const [liveData, setLiveData] = useState<DataOHCL[]>([]);
 
   useEffect(() => {
-    const ws = new WebSocket(`${BASE_URL_FUTURE_WS}/${symbol}@kline_1m`);
-    ws.onopen = () => {
-      console.log("WebSocket connection established");
-    };
+    console.log(symbol);
+    const ws = new WebSocket(
+      `${BASE_URL_FUTURE_WS}/${symbol.toLowerCase()}@kline_1m`
+    );
     ws.onmessage = (event) => {
       const { k } = JSON.parse(event.data);
       console.log(k);
@@ -42,14 +42,17 @@ export const CandleStream = ({ symbol }: { symbol: string }) => {
           return [newCandle];
         }
       });
-      ws.onerror = () => {
-        console.log("WebSocket connection Error");
-      };
-      ws.onclose = () => {
-        console.log("WebSocket connection Close");
-      };
     };
-  }, [symbol]);
+    ws.onopen = () => {
+      console.log("WebSocket connection established");
+    };
+    ws.onerror = () => {
+      console.log("WebSocket connection Error");
+    };
+    ws.onclose = () => {
+      console.log("WebSocket connection Close");
+    };
+  }, []);
 
   return (
     <div className="flex flex-col sm:flex-row flex-wrap gap-2">

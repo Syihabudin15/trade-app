@@ -36,7 +36,7 @@ export const ListMarket = () => {
               .filter((f) => f.symbol.includes(search.toUpperCase()))
               .map((d) => (
                 <Link href={`/market/${d.symbol}`} key={d.symbol}>
-                  <div className="border rounded shadow border-green-500 p-4 w-44">
+                  <div className="border rounded shadow border-green-500 p-4 w-36">
                     <p className="font-bold">{d.symbol}</p>
                     <p>{d.price}</p>
                   </div>
@@ -44,7 +44,7 @@ export const ListMarket = () => {
               ))
           : data.map((d) => (
               <Link href={`/market/${d.symbol}`} key={d.symbol}>
-                <div className="border rounded shadow border-green-500 p-4 w-44">
+                <div className="border rounded shadow border-green-500 p-4 w-36">
                   <p className="font-bold">{d.symbol}</p>
                   <p>{d.price}</p>
                 </div>
