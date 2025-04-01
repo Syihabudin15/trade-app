@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function Home() {
   return (
     <div>
-      <div className="flex flex-col-reverse sm:flex-row items-center gap-4 bg-gradient-to-br from-green-400 to-blue-400 py-32 px-5 sm:px-10 mb-20">
+      <div className="flex flex-col-reverse sm:flex-row items-center gap-4 bg-gradient-to-br from-green-400 to-blue-400 py-32 px-5 sm:px-10 mb-20 relative">
         <div className="flex-1 my-10">
           <h1 className="text-sm font-bold">Trade App</h1>
           <h2 className="font-bold text-3xl">Prediction</h2>
@@ -24,7 +24,7 @@ export default function Home() {
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 1440 320"
-          className="absolute w-full left-0 opacity-80 bottom-15 sm:-bottom-10"
+          className="absolute w-full left-0 opacity-80 bottom-0 sm:-bottom-20"
         >
           <path
             fill="#ffffff"
@@ -35,7 +35,7 @@ export default function Home() {
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 1440 320"
-          className="absolute w-full left-0  bottom-10 sm:-bottom-15"
+          className="absolute w-full left-0  -bottom-5 sm:-bottom-30"
         >
           <path
             fill="#ffffff"

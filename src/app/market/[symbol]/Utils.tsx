@@ -10,13 +10,11 @@ export const CandleStream = ({ symbol }: { symbol: string }) => {
   const [liveData, setLiveData] = useState<DataOHCL[]>([]);
 
   useEffect(() => {
-    console.log(symbol);
     const ws = new WebSocket(
       `${BASE_URL_FUTURE_WS}/${symbol.toLowerCase()}@kline_1m`
     );
     ws.onmessage = (event) => {
       const { k } = JSON.parse(event.data);
-      console.log(k);
       const newCandle: DataOHCL = {
         opentime: k.t,
         closetime: k.T,
